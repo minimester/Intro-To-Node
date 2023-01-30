@@ -6,19 +6,29 @@ First, we need to know how we will run our JavaScript files.
 
 1. Open up a terminal/command prompt on your computer.
 
-    - If you're using VSCode, you can open a new terminal using your menu options at the top of your left screen. At the top left menu bar, select `Terminal` then `New Terminal` in the dropdown. This will open a command prompt/terminal in the same folder where we are at now.
+    - If you're using VSCode, you can open a new terminal using your menu options at the top left of your screen. At the top left menu bar, select `Terminal` then `New Terminal` in the dropdown. This will open a command prompt/terminal in the same folder where we are at now.
     - If NOT using VSCode, we can open a terminal/command prompt using our folders.
         - macOS: Go to your folder where you downloaded the repository to. Right click on the repository folder. A menu will popup. Select `New Terminal at Folder`
         - Windows: Go to your folder where you downloaded the repository to. Right click on the repository folder. A menu will popup. Select `Open in Terminal`
 
 
-2. Now our terminal/command prompt is pointing to the folder of our repository! What we want to do from here is create a new JavaScript file.
+2. Now our terminal/command prompt is pointing to the folder of our repository! What we want to do from here is create a new JavaScript file. We have two ways of doing this.
 
-    - Using our terminal/command prompt, we can create a new file using commands that are appropriate for your machine:
-        - macOS: In your terminal, write `touch app.js` and press Enter.
-        - Windows: In your command prompt, write `echo > app.js` and press Enter.
+    - **Option 1**: Using Terminal/Command Prompt
 
-3. We now created a JavaScript file called `app.js`. We can now see this in our browser explorer in our file editor (ex: VSCode). Open the `app.js` file by clicking on it in your browser explorer
+        We can create a new file using commands that are appropriate for your machine:
+        - **macOS**: In your terminal, write `touch app.js` and press Enter.
+        - **Windows**: In your command prompt, write `type nul > app.js` and press Enter.
+
+    - **Option 2**: Using our Text Editor (VSCode, etc)
+        
+        We can create a new file by doing the following steps: 
+
+        * Go to your menu options on the top left of your screen.
+        * Select `File`, then `New File` in the dropdown.
+        * A popup should display asking for a file name. Write `app.js` and then press Enter
+
+3. We now created a JavaScript file called `app.js`. We can now see this in our browser explorer in our text editor (ex: VSCode). Open the `app.js` file by clicking on it in your browser explorer
 
 4. We can now start writing our JavaScript code!. In your editor, write the following:
 
