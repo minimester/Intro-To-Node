@@ -8,31 +8,36 @@ We need to build a script that can `deposit`, `withdraw` money as well as let us
 
 - `deposit` money into either my checkings account or savings account
 - `withdraw` money from either my checkings account or savings account
-- `checkBalances` the amount of money I have from either my checkings or savings account
+- `checkBalance` the amount of money I have from either my checkings or savings account
 
 ## Requirements
 In order to do this, we should include the following:
 
-- A function `deposit` that returns the sum of the account with the deposited amount. This function takes in two arguments:
-    - A number `account` - the account balance you want to deposit into
-    - A number `amount` - the amount of money we wish to deposit
 
-    NOTE:
-    - Check if the value of `amount` is a number. If not, display an error message: `amount is not a number`.
+
+### Deposit
+
+A function `deposit` that returns the sum of the account with the deposited amount. This function takes in two arguments:
+- A number `accountValue` - the account balance you want to deposit into
+- A number `amount` - the amount of money we wish to deposit
+
+NOTE:
+- Check if the value of `amount` is a number. If not, display an error message: `amount is not a number` and exit out of the function.
 
 <details>
 <summary>See deposit guide</summary>
 
 ```js
-function deposit(account, amount) {
+function deposit(accountValue, amount) {
     /*
         Check if `amount` is a valid number:
             
         IF `amount` is NOT a valid number:
             Display message: `amount is not a number`
+            Exit out of function
 
         IF `amount` is a valid number:
-            return sum of `account` + `amount`
+            return sum of `accountValue` + `amount`
     */
 }
 ```
@@ -42,35 +47,41 @@ function deposit(account, amount) {
 <summary>See deposit implementation</summary>
 
 ```js
-function deposit(account, amount) {
+function deposit(accountValue, amount) {
     //Check if `amount` is a valid number:
 
     //If amount is NOT a valid number
     if (Number.isNaN(Number(amount))) {
-        console.log('amount is not a number') //Display error message if invalid number
+        console.log('amount is not a number'); //Display error message if invalid number
+        return;
     } else {
         //Return money in account after depositing
-        return account += amount;
+        return accountValue += amount;
     }
 }
 ```
 </details>
 
-- A function `withdraw` that withdraws money from a selected account. This function takes in two arguments:
 
-    - A number `account` - the account balance you want to withdraw money from
-    - A number `amount` - the amount of money we wish to withdraw
 
-    NOTE: 
-    - This function should check if we have enough money in our account to withdraw. If not, then display a `You don't enough have money in your account` message and do NOT withdraw money.
-    - Check if the value of `amount` is a number. If not, display an error message: `amount is not a number`.
+
+### Withdraw
+
+A function `withdraw` that withdraws money from a selected account. This function takes in two arguments:
+
+- A number `accountValue` - the account balance you want to withdraw money from
+- A number `amount` - the amount of money we wish to withdraw
+
+NOTE: 
+- Check if we have enough money in our account to withdraw. If not, then display a `You don't enough have money in your account` message and do NOT withdraw money. Afterwards, exit out of the function
+- Check if the value of `amount` is a number. If not, display an error message: `amount is not a number` and exit out of the function
 
 
 <details>
 <summary>See withdraw guide</summary>
         
 ```js
-function withdraw(account, amount) {
+function withdraw(accountValue, amount) {
     /*  
         Check if `amount` is NOT a valid number
 
@@ -78,12 +89,14 @@ function withdraw(account, amount) {
             Display message: `amount is not a number`
             Exit out of the function
 
-        Check if `account` has the amount of money we want to withdraw
+        Check if `accountValue` has the amount of money we want to withdraw
         
         IF YES:
-            Subtract `amount` from `account`
+            Subtract `amount` from `accountValue`
+            Return new 
         IF NO
             Display message: `You don't have enough money in your account`
+            Exit out of function
     */
 }
 ```
@@ -93,63 +106,69 @@ function withdraw(account, amount) {
 <summary>See withdraw implementation</summary>
 
 ```js
-function withdraw(account, amount) {
+function withdraw(accountValue, amount) {
     //Check if `amount` is NOT a valid number
 
     //If `amount` is NOT a valid number, display error message and exit out of function
     if (Number.isNaN(Number(amount))) {
         console.log('amount is not a number')
-        return;
+        return; //Exit out of function
     }
 
     //Check if account has the amount of money we want to withdraw
-    if ((account - amount) >= 0) {
-        return account -= amount; //subtract `amount` from account
+    if ((accountValue - amount) >= 0) {
+        return accountValue -= amount; //subtract `amount` from accountValue
     } else {
         //If not enough amount of money in account
         console.log("You don't have enough money in your account"); //Display error message
+        return; //Exit out of function
     }
 }
 ```
 </details>
 
 
-- A function `checkBalances` that displays the amount of money there is within your checkings and savings account. This function doesn't take any arguments. 
+
+
+### Check Balance
+
+A function `checkBalance` that displays the amount of money there is within your account. This function takes in one argument:
+- A number `accountValue` - the account balance
 
 <details>
-<summary>See checkBalances guide</summary>
+<summary>See checkBalance guide</summary>
      
 ```js
-function checkBalances() {
+function checkBalance(accountValue) {
     /*
-        Display amount of money in savings account
-        Display amount of money in checkings account
+        Display amount of money in balance account
     */
 }
 ```
 </details>
 
 <details>
-<summary>See checkBalances implementation</summary>
+<summary>See checkBalance implementation</summary>
 
 ```js
-function checkBalances() {
+function checkBalance(accountValue) {
     //Display amount of money in savings account
-    console.log(`You have $${savings} in your savings account.`);
-    //Display amount of money in checkings account
-    console.log(`You have $${checkings} in your checkings account.`);
+    console.log(`You have $${accountValue} in your account.`);
 }
 
 ```
 
 </details>
 
+
+
+
 ## Testing
 
 Make sure to test our solution after we are done building it.
 
 ### Scenario
-Frank needs to do a variety of transactions on the ATM. He has the same bank as you! Frank has a total of `$500` in his `checkings` account and `$1,500` in his `savings` account. Using your script, help Frank with the following (in the exact order):
+Frank needs to do a variety of transactions on the ATM. Frank has a total of `$500` in his `checkings` account and `$1,500` in his `savings` account. Using your script, help Frank with the following (in the exact order):
 
 - Deposit `$300` into his `checkings` account
 - Withdraw `$200` from his `savings` account
@@ -162,17 +181,20 @@ Frank needs to do a variety of transactions on the ATM. He has the same bank as 
 let checkings = 500;
 let savings = 1500;
 
-function deposit(account, amount) {
+function deposit(accountValue, amount) {
+    //Check if `amount` is a valid number:
+
     //If amount is NOT a valid number
     if (Number.isNaN(Number(amount))) {
-        console.log('amount is not a number') //Display error message if invalid number
+        console.log('amount is not a number'); //Display error message if invalid number
+        return;
     } else {
         //Return money in account after depositing
-        return account += amount;
+        return accountValue += amount;
     }
 }
 
-function withdraw(account, amount) {
+function withdraw(accountValue, amount) {
     //Check if `amount` is NOT a valid number
 
     //If `amount` is NOT a valid number, display error message and exit out of function
@@ -182,25 +204,23 @@ function withdraw(account, amount) {
     }
 
     //Check if account has the amount of money we want to withdraw
-    if ((account - amount) >= 0) {
-        //Return money in account after withdraw
-        return account -= amount;
+    if ((accountValue - amount) >= 0) {
+        return accountValue -= amount; //subtract `amount` from accountValue
     } else {
         //If not enough amount of money in account
         console.log("You don't have enough money in your account"); //Display error message
     }
 }
 
-function checkBalances() {
-    //Display amount of money in savings account
-    console.log(`You have $${savings} in your savings account.`);
-    //Display amount of money in checkings account
-    console.log(`You have $${checkings} in your checkings account.`);
+function checkBalance(accountValue) {
+    //Display amount of money in account
+    console.log(`You have $${accountValue} in your account.`);
 }
 
 checkings = deposit(checkings, 300); //Deposit $300 into checkings account
 savings = withdraw(savings, 200); //Withdraw $200 from savings account
-checkBalances(); //Display balance of both checkings and savings account
+checkBalance(checking); //Display balance of checkings
+checkBalance(savings); //Display balance of checkings
 ```
 
 </details>
@@ -238,7 +258,7 @@ Using your implementation, `deposit` Frank's 6 `$100` checks into his `savings` 
 for (let i = 0; i < 6; i++) {
     savings = deposit(savings, 100);
 }
-checkBalances(); //Display balance of both checkings and savings account
+checkBalance(); //Display balance of both checkings and savings account
 ```
 
 </details>
