@@ -87,7 +87,7 @@ Write a function `oddsAndEvens` that takes a number variable `start` and finds t
 <details>
 <summary>Exercise 3</summary>
 
-You are a credit card holder of your bank's student rewards program. One of your favorite perks about this card is that you earn `3%` cash back on dining. You just found out that you are now part of Minimester and treat yourself to an unforgettable culinary experience at an award-winning restaurant! You enjoy your fancy meal and then you receive your bill. At such a great restaurant, you should be expecting to leave a tip for great service! We will not be including tax in this situation.
+You are a credit card holder of your bank's student rewards program. One of your favorite perks about this card is that you earn `3%` cash back on dining. There's a new dine in restaurant in town that you want to try! One evening you go to the restaurant, you enjoy your meal and then you receive your bill. You should be expecting to leave a tip for the great service! We will not be including tax in this situation.
 
 Write a function called `calculateCashback()` that calculates out how much cash back you earned after paying the bill with tip included. This function takes in two arguments:
 
@@ -103,8 +103,6 @@ Your function should include:
 NOTE:
 - If the given `bill` is NOT a number, then display the error message: `bill was not a number`
 - If the given `tip` is NOT a number, then display the error message: `tip was not a number`
-
-REMINDER: `3%` = `0.03`. Percentage as decimal = Whole number / 100;
 
 <details>
 <summary>Stretch Goal</summary>
